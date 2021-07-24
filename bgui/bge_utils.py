@@ -125,7 +125,7 @@ class System(BguiSystem):
 
 		# Handle the mouse
 		mouse = self.mouse
-		mouse_events = mouse.events
+		mouse_events = mouse.inputs
 
 		pos = list(mouse.position[:])
 		pos[0] *= render.getWindowWidth()
@@ -145,10 +145,10 @@ class System(BguiSystem):
 		# Handle the keyboard
 		keyboard = logic.keyboard
 
-		key_events = keyboard.events
+		key_events = keyboard.inputs
 		is_shifted = key_events[events.LEFTSHIFTKEY] == logic.KX_INPUT_ACTIVE or \
 					key_events[events.RIGHTSHIFTKEY] == logic.KX_INPUT_ACTIVE
 
-		for key, state in keyboard.events.items():
+		for key, state in keyboard.inputs.items():
 			if state == logic.KX_INPUT_JUST_ACTIVATED:
 				self.update_keyboard(self.keymap[key], is_shifted)
